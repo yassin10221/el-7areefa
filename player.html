@@ -59,14 +59,36 @@ db.collection("players").doc(playerId.toLowerCase()).get()
     </section>
   </main>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const playerName = params.get("name");
+<script>
+const searchParams = new URLSearchParams(window.location.search);
+const playerId = searchParams.get("name");
 
-    document.getElementById("playerName").innerText =
-      playerName ? playerName.toUpperCase() : "Player not found";
-  </script>
+if (!playerId) {
+  alert("No player selected");
+}
 
-  
+db.collection("players").doc(playerId.toLowerCase()).get()
+.then(doc => {
+  if (!doc.exists) {
+    document.body.innerHTML = "<h2>Player not found</h2>";
+    return;
+  }
+
+  const p = doc.data();
+
+  document.body.innerHTML = `
+    <main class="formContainer">
+      <section style="background:#eee;padding:20px;border-radius:20px;width:400px;">
+        <img src="${p.image}" style="width:100%;border-radius:20px">
+        <h2>${p.name}</h2>
+        <p><strong>Age:</strong> ${p.age}</p>
+        <p><strong>Club:</strong> ${p.club}</p>
+        <p><strong>Position:</strong> ${p.position}</p>
+        <p><strong>Goals:</strong> ${p.goals}</p>
+      </section>
+    </main>
+  `;
+});
+</script>
 </body>
 </html>
