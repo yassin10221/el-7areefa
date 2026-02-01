@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>El-7areefa</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <div class="headerContainer">
+      <div class="header">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="logo" />
+        </a>
+        <div class="headerLinks">
+          <a href="index.html">Home</a>
+            <a href="contactUs.html">Contact Us</a>
+<a href="signIn.html" id="registerBtn"><button class="btn">Register</button></a>
+          <button class="btn" onclick="logout()">Logout</button>
+          <p id="userEmail"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LANDING PAGE -->
+    <div class="landingPageContainer">
+      <div class="landingPage">
+        <!-- LEFT SIDE -->
+        <div class="leftSide">
+          <p class="welcome">Welcome to El-7areefa</p>
+          <h1 class="slogan">The professional platform for school football talent</h1>
+          <p class="description">
+            This website is made for students who play football in their school classes.
+            It helps organize matches, showcase players, and vote for top performances,
+            making school football more fun and engaging.
+          </p>
+          <div class="searchBar">
+            <input type="text" placeholder="Type Something" />
+            <button class="btn">SEARCH NOW</button>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE  -->
+        <div class="imageContainer">
+          <img src="images/banner-image.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- TRENDING GAMES SECTION  -->
+    <div class="trendingContainer">
+      <span>Players</span>
+      <div class="trendingHeader">
+        <h1>Attackers</h1>
+      </div>
+      <div class="trendingCard">
+        <!-- TRENDING GAME 1 -->
+        <div class="card">
+          <img src="images/trending-01.png" alt="" class="yassin"/>
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Yassin Wael</p>
+              <h3>Striker</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="images/online.png" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <!-- TRENDING GAME 2 -->
+        <div class="card">
+          <img src="images/trending-02.png" alt="" class="yassin"/>
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Yussuf Ahmed</p>
+              <h3>Left Wing</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="images/online-.png" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <!-- TRENDING GAME 3 -->
+        <div class="card">
+          <img src="images/trending-03.jpg" alt="" />
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Hamza Hossam</p>
+              <h3>Right Wing</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="images/online-.png" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <!-- TRENDING GAME 4 -->
+        <div class="card">
+          <img src="images/trending-04.jpg" alt="" />
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Yassin Ramy</p>
+              <h3>Striker</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="images/online.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOST PLAYED SECTION  -->
+    <div class="mostContainer">
+      <div class="mostPlayed">
+        <span>Players</span>
+        <div class="mostHeader">
+          <h1>Midfielders</h1>
+        </div>
+        <div class="mostCards">
+          <!-- CARD 1  -->
+          <div class="card">
+            <div class="cardImg">
+              <img src="images/top-game-01.jpg" alt="" />
+            </div>
+            <div class="cardInfo">
+              <p class="genre">Adventure</p>
+              <h3 class="cardName">Assasin Creed</h3>
+              <button class="btn">explore</button>
+            </div>
+          </div>
+          <!-- CARD 2  -->
+          <div class="card">
+            <div class="cardImg">
+              <img src="images/top-game-02.jpg" alt="" />
+            </div>
+            <div class="cardInfo">
+              <p class="genre">Adventure</p>
+              <h3 class="cardName">Assasin Creed</h3>
+              <button class="btn">explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP CATEGORIES  -->
+    <div class="trendingContainer">
+      <span>Players</span>
+      <div class="trendingHeader">
+        <h1>Defenders</h1>
+      </div>
+      <div class="trendingCard">
+        <!-- TRENDING GAME 1 -->
+        <div class="card">
+          <img src="images/trending-01.png" alt="" class="yassin"/>
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Yassin Wael</p>
+              <h3>Striker</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="images/online.png" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <!-- TRENDING GAME 2 -->
+        <div class="card">
+          <img src="images/trending-02.png" alt="" class="yassin"/>
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Yussuf Ahmed</p>
+              <h3>Left Wing</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="images/online-.png" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <!-- TRENDING GAME 3 -->
+        <div class="card">
+          <img src="images/trending-03.jpg" alt="" />
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Hamza Hossam</p>
+              <h3>Right Wing</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="images/online-.png" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <!-- TRENDING GAME 4 -->
+        <div class="card">
+          <img src="images/trending-04.jpg" alt="" />
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Yassin Ramy</p>
+              <h3>Striker</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="images/online.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER  -->
+    <div class="footerContainer">
+      <div class="footer">
+        copyright &copy; 2026 El-7areefa. All rights reserved. Design:
+        TemplateMo
+      </div>
+    </div>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyA4yfl48U9agGiK_tGhnNmvBV7qZu47NzE",
+    authDomain: "el-7areefa-ac2fb.firebaseapp.com",
+    projectId: "el-7areefa-ac2fb"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+firebase.auth().onAuthStateChanged(user => {
+  const emailText = document.getElementById("userEmail");
+  const registerBtn = document.getElementById("registerBtn");
+
+  if (user) {
+    emailText.innerText = "Logged in as: " + user.email;
+    registerBtn.style.display = "none";
+  } else {
+    emailText.innerText = "";
+    registerBtn.style.display = "inline-block";
+  }
+});
+</script>
+
+
+
+<script>
+function logout() {
+  firebase.auth().signOut().then(() => {
+    window.location.href = "login.html";
+  });
+}
+</script>
+
+
+  </body>
+</html>
