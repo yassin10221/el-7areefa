@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="formContainer">
+    <section>
+      <h2 id="playerName"></h2>
+      <p>Player profile page</p>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const playerName = params.get("name");
+
+    document.getElementById("playerName").innerText =
+      playerName ? playerName.toUpperCase() : "Player not found";
+  </script>
+
+</body>
+</html>

@@ -22,7 +22,7 @@
         <div class="headerLinks">
           <a href="index.html">Home</a>
             <a href="contactUs.html">Contact Us</a>
-<a href="signIn.html" id="registerBtn"><button class="btn">Register</button></a>
+            <a href="signIn.html" id="registerBtn"><button class="btn">Register</button></a>
           <button class="btn" onclick="logout()">Logout</button>
           <p id="userEmail"></p>
         </div>
@@ -42,10 +42,14 @@
             making school football more fun and engaging.
           </p>
           <div class="searchBar">
-            <input type="text" placeholder="Type Something" />
-            <button class="btn">SEARCH NOW</button>
+          <input 
+          type="text" 
+          id="playerSearch" 
+          placeholder="Search player name..."
+          >
+          <button class="btn searchBtn" onclick="searchPlayer()">Search</button>
           </div>
-        </div>
+          </div>
 
         <!-- RIGHT SIDE  -->
         <div class="imageContainer">
@@ -265,6 +269,19 @@ function logout() {
 }
 </script>
 
+<script>
+function searchPlayer() {
+  const input = document.getElementById("playerSearch").value.trim();
+
+  if (input === "") {
+    alert("Please enter a player name");
+    return;
+  }
+
+  // Go to player page with name
+  window.location.href = `player.html?name=${encodeURIComponent(input)}`;
+}
+</script>
 
   </body>
 </html>
