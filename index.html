@@ -46,9 +46,12 @@
     type="text"
     id="playerSearch"
     placeholder="Search player name..."
+    oninput="liveSearch()"
+    autocomplete="off"
   >
-  <button class="btn searchBtn" onclick="searchPlayer()">Search</button>
+  <div id="searchResults" class="search-results"></div>
 </div>
+
 
           </div>
 
@@ -74,9 +77,6 @@
               <p>Yassin Wael</p>
               <h3>Striker</h3>
             </div>
-            <a href="#" class="icon">
-              <img src="images/online.png" alt="" />
-            </a>
           </div>
         </div>
 
@@ -88,9 +88,6 @@
               <p>Yussuf Ahmed</p>
               <h3>Left Wing</h3>
             </div>
-            <a href="#" class="icon">
-              <img src="images/online-.png" alt="" />
-            </a>
           </div>
         </div>
 
@@ -102,9 +99,6 @@
               <p>Hamza Hossam</p>
               <h3>Right Wing</h3>
             </div>
-            <a href="#" class="icon">
-              <img src="images/online-.png" alt="" />
-            </a>
           </div>
         </div>
 
@@ -116,9 +110,6 @@
               <p>Yassin Ramy</p>
               <h3>Striker</h3>
             </div>
-            <a href="#" class="icon">
-              <img src="images/online.png" alt="" />
-            </a>
           </div>
         </div>
       </div>
@@ -138,9 +129,8 @@
               <img src="images/top-game-01.jpg" alt="" class="yassin"/>
             </div>
             <div class="cardInfo">
-              <p class="genre">Adventure</p>
-              <h3 class="cardName">Assasin Creed</h3>
-              <button class="btn">explore</button>
+              <p class="genre">Bassam</p>
+              <h3 class="cardName">CM</h3>
             </div>
           </div>
           <!-- CARD 2  -->
@@ -149,9 +139,8 @@
               <img src="images/top-game-02.jpg" alt="" class="yassin"/>
             </div>
             <div class="cardInfo">
-              <p class="genre">Adventure</p>
-              <h3 class="cardName">Assasin Creed</h3>
-              <button class="btn">explore</button>
+              <p class="genre">yousif Wasseem</p>
+              <h3 class="cardName">CM</h3>
             </div>
           </div>
         </div>
@@ -170,26 +159,20 @@
           <img src="images/trending-01.png" alt="" class="yassin"/>
           <div class="cardInfo">
             <div class="cardName">
-              <p>Yassin Wael</p>
-              <h3>Striker</h3>
+              <p>Ali</p>
+              <h3>LB</h3>
             </div>
-            <a href="#" class="icon">
-              <img src="images/online.png" alt="" />
-            </a>
           </div>
         </div>
 
         <!-- TRENDING GAME 2 -->
         <div class="card">
-          <img src="images/trending-02.png" alt="" class="yassin"/>
+          <img src="images/malek.png.jpg" alt="" class="yassin"/>
           <div class="cardInfo">
             <div class="cardName">
-              <p>Yussuf Ahmed</p>
-              <h3>Left Wing</h3>
+              <p>Malek</p>
+              <h3>CB</h3>
             </div>
-            <a href="#" class="icon">
-              <img src="images/online-.png" alt="" />
-            </a>
           </div>
         </div>
 
@@ -198,12 +181,9 @@
           <img src="images/trending-03.jpg" alt="" class="yassin"/>
           <div class="cardInfo">
             <div class="cardName">
-              <p>Hamza Hossam</p>
-              <h3>Right Wing</h3>
+              <p>Abdelrahman</p>
+              <h3>CB</h3>
             </div>
-            <a href="#" class="icon">
-              <img src="images/online-.png" alt="" />
-            </a>
           </div>
         </div>
 
@@ -212,12 +192,9 @@
           <img src="images/trending-04.jpg" alt="" class="yassin"/>
           <div class="cardInfo">
             <div class="cardName">
-              <p>Yassin Ramy</p>
-              <h3>Striker</h3>
+              <p>Omar</p>
+              <h3>RB</h3>
             </div>
-            <a href="#" class="icon">
-              <img src="images/online.png" alt="" />
-            </a>
           </div>
         </div>
       </div>
@@ -234,6 +211,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
 <script>
   const firebaseConfig = {
@@ -241,8 +219,10 @@
     authDomain: "el-7areefa-ac2fb.firebaseapp.com",
     projectId: "el-7areefa-ac2fb"
   };
-
-  firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+  const db = firebase.firestore();
 </script>
 
 <script>
