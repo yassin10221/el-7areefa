@@ -74,5 +74,32 @@ db.collection("players").doc(playerId.toLowerCase()).get()
   </section>
 </main>
 
+<script>
+const params = new URLSearchParams(window.location.search);
+const playerId = params.get("name");
+
+db.collection("players").doc(playerId.toLowerCase()).get()
+.then(doc => {
+  if (!doc.exists) {
+    alert("Player not found");
+    return;
+  }
+
+  const p = doc.data();
+
+  document.getElementById("name").innerText = p.name;
+  document.getElementById("overall").innerText = p.overall;
+  document.getElementById("position").innerText = p.position;
+  document.getElementById("playerImage").src = p.image;
+
+  document.getElementById("pace").innerText = p.pace;
+  document.getElementById("shooting").innerText = p.shooting;
+  document.getElementById("passing").innerText = p.passing;
+  document.getElementById("dribbling").innerText = p.dribbling;
+  document.getElementById("defending").innerText = p.defending;
+  document.getElementById("physical").innerText = p.physical;
+});
+</script>
+
 </body>
 </html>
