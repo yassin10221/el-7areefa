@@ -460,3 +460,44 @@ input, textarea, button {
   height: 52px;
   padding: 0 25px;
 }
+
+.fifa-card {
+  width: 350px;
+  height: 500px;
+  background: linear-gradient(135deg, gold, #b8860b);
+  border-radius: 20px;
+  display: flex;
+  padding: 20px;
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.card-left {
+  width: 40%;
+  text-align: center;
+}
+
+.card-left img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.overall {
+  font-size: 48px;
+  margin: 0;
+}
+
+.position {
+  font-weight: bold;
+}
+
+.card-right {
+  width: 60%;
+  padding-left: 10px;
+}
+
+.stats p {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}

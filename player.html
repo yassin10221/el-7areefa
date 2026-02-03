@@ -52,43 +52,27 @@ db.collection("players").doc(playerId.toLowerCase()).get()
 </head>
 <body>
 
-  <main class="formContainer">
-    <section>
-      <h2 id="playerName"></h2>
-      <p>Player profile page</p>
-    </section>
-  </main>
+<main class="formContainer">
+  <section class="fifa-card">
+    <div class="card-left">
+      <h1 class="overall" id="overall"></h1>
+      <p class="position" id="position"></p>
+      <img id="playerImage">
+    </div>
 
-<script>
-const searchParams = new URLSearchParams(window.location.search);
-const playerId = searchParams.get("name");
+    <div class="card-right">
+      <h2 id="name"></h2>
+      <div class="stats">
+        <p>PAC <span id="pace"></span></p>
+        <p>SHO <span id="shooting"></span></p>
+        <p>PAS <span id="passing"></span></p>
+        <p>DRI <span id="dribbling"></span></p>
+        <p>DEF <span id="defending"></span></p>
+        <p>PHY <span id="physical"></span></p>
+      </div>
+    </div>
+  </section>
+</main>
 
-if (!playerId) {
-  alert("No player selected");
-}
-
-db.collection("players").doc(playerId.toLowerCase()).get()
-.then(doc => {
-  if (!doc.exists) {
-    document.body.innerHTML = "<h2>Player not found</h2>";
-    return;
-  }
-
-  const p = doc.data();
-
-  document.body.innerHTML = `
-    <main class="formContainer">
-      <section style="background:#eee;padding:20px;border-radius:20px;width:400px;">
-        <img src="${p.image}" style="width:100%;border-radius:20px">
-        <h2>${p.name}</h2>
-        <p><strong>Age:</strong> ${p.age}</p>
-        <p><strong>Club:</strong> ${p.club}</p>
-        <p><strong>Position:</strong> ${p.position}</p>
-        <p><strong>Goals:</strong> ${p.goals}</p>
-      </section>
-    </main>
-  `;
-});
-</script>
 </body>
 </html>
