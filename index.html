@@ -22,6 +22,7 @@
         <div class="headerLinks">
           <a href="index.html">Home</a>
             <a href="contactUs.html">Contact Us</a>
+            <a href="ranking.html">Ranking</a>
             <a href="signIn.html" id="registerBtn"><button class="btn">Register</button></a>
           <button class="btn" onclick="logout()">Logout</button>
           <p id="userEmail"></p>
@@ -57,7 +58,7 @@
 
         <!-- RIGHT SIDE  -->
         <div class="imageContainer">
-          <img src="images/banner-image.png" alt="" />
+        <img src="images/banner-image.png" alt="" />
         </div>
       </div>
     </div>
@@ -75,7 +76,7 @@
           <div class="cardInfo">
             <div class="cardName">
               <p>Yassin Wael</p>
-              <h3>Striker</h3>
+              <h3>Left Wing</h3>
             </div>
           </div>
         </div>
@@ -93,7 +94,7 @@
 
         <!-- TRENDING GAME 3 -->
         <div class="card">
-          <img src="images/trending-03.jpg" alt="" class="yassin" />
+          <img src="images/hamza.png" alt="" class="yassin" />
           <div class="cardInfo">
             <div class="cardName">
               <p>Hamza Hossam</p>
@@ -126,7 +127,7 @@
           <!-- CARD 1  -->
           <div class="card">
             <div class="cardImg">
-              <img src="images/top-game-01.jpg" alt="" class="yassin"/>
+              <img src="images/bassam.png" alt="" class="yassin"/>
             </div>
             <div class="cardInfo">
               <p class="genre">Bassam</p>
@@ -136,7 +137,7 @@
           <!-- CARD 2  -->
           <div class="card">
             <div class="cardImg">
-              <img src="images/top-game-02.jpg" alt="" class="yassin"/>
+              <img src="images/yousif_wasseem.png" alt="" class="yassin"/>
             </div>
             <div class="cardInfo">
               <p class="genre">yousif Wasseem</p>
@@ -156,7 +157,7 @@
       <div class="trendingCard">
         <!-- TRENDING GAME 1 -->
         <div class="card">
-          <img src="images/trending-01.png" alt="" class="yassin"/>
+          <img src="images/ali.png" alt="" class="yassin"/>
           <div class="cardInfo">
             <div class="cardName">
               <p>Ali</p>
@@ -178,7 +179,7 @@
 
         <!-- TRENDING GAME 3 -->
         <div class="card">
-          <img src="images/trending-03.jpg" alt="" class="yassin"/>
+          <img src="images/abdelrahman.png" alt="" class="yassin"/>
           <div class="cardInfo">
             <div class="cardName">
               <p>Abdelrahman</p>
@@ -199,6 +200,18 @@
         </div>
       </div>
     </div>
+<!-- BROWSE PLAYERS -->
+<div class="trendingContainer">
+  <span>Players</span>
+  <div class="trendingHeader">
+    <h1>Browse All Players</h1>
+<a href="players.html" class="view-all-btn">
+  View All Players →
+</a>
+  </div>
+
+  <div class="trendingCard" id="homePlayers"></div>
+</div>
 
     <!-- FOOTER  -->
     <div class="footerContainer">
@@ -226,21 +239,69 @@
 </script>
 
 <script>
+function liveSearch() {
+  const input = document.getElementById("playerSearch").value.toLowerCase().trim();
+  const resultsBox = document.getElementById("searchResults");
+
+  resultsBox.innerHTML = "";
+
+  if (input.length < 2) {
+    resultsBox.style.display = "none";
+    return;
+  }
+
+  db.collection("players")
+    .where("nameLower", ">=", input)
+    .where("nameLower", "<=", input + "\uf8ff")
+    .limit(5)
+    .get()
+    .then(snapshot => {
+      if (snapshot.empty) {
+        resultsBox.innerHTML = `<div class="no-results">No players found</div>`;
+        resultsBox.style.display = "block";
+        return;
+      }
+
+      snapshot.forEach(doc => {
+        const p = doc.data();
+
+        resultsBox.innerHTML += `
+          <div class="search-item" onclick="goToPlayer('${doc.id}')">
+            <img src="${p.image}" />
+            <div class="info">
+              <span>${p.name}</span>
+              <small>${p.position} • ${p.overall}</small>
+            </div>
+          </div>
+        `;
+      });
+
+      resultsBox.style.display = "block";
+    });
+}
+
+function goToPlayer(id) {
+  window.location.href = "player.html?id=" + id;
+}
+</script>
+
+<script>
 firebase.auth().onAuthStateChanged(user => {
   const emailText = document.getElementById("userEmail");
   const registerBtn = document.getElementById("registerBtn");
+  const logoutBtn = document.querySelector("button[onclick='logout()']");
 
   if (user) {
     emailText.innerText = "Logged in as: " + user.email;
     registerBtn.style.display = "none";
+    logoutBtn.style.display = "inline-block";
   } else {
     emailText.innerText = "";
     registerBtn.style.display = "inline-block";
+    logoutBtn.style.display = "none";
   }
 });
 </script>
-
-
 
 <script>
 function logout() {
@@ -251,16 +312,28 @@ function logout() {
 </script>
 
 <script>
-function searchPlayer() {
-  const input = document.getElementById("playerSearch").value.trim();
+const homePlayers = document.getElementById("homePlayers");
 
-  if (input === "") {
-    alert("Please enter a player name");
-    return;
-  }
+db.collection("players").limit(4).get().then(snapshot => {
+  snapshot.forEach(doc => {
+    const p = doc.data();
 
-  // Go to player page with name
-  window.location.href = `player.html?name=${encodeURIComponent(input)}`;
+    homePlayers.innerHTML += `
+      <div class="card" onclick="openPlayer('${doc.id}')">
+        <img src="${p.image}" class="yassin">
+        <div class="cardInfo">
+          <div class="cardName">
+            <p>${p.name}</p>
+            <h3>${p.position} • ${p.overall}</h3>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+});
+
+function openPlayer(id) {
+  window.location.href = "player.html?id=" + id;
 }
 </script>
 
